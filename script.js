@@ -1,30 +1,45 @@
-// script.js — create a 16x16 grid dynamically
+// script.js — dynamic grid generator with resize prompt
 
-// configuration
-const GRID_SIZE = 16; // 16 x 16
-const TOTAL_SQUARES = GRID_SIZE * GRID_SIZE;
-
-document.addEventListener("DOMContentLoaded", () => {
+// Function that creates the grid
+function createGrid(size) {
   const container = document.getElementById("grid-container");
-  if (!container) {
-    console.error("Grid container not found. Check index.html for 
-#grid-container.");
+  container.innerHTML = ""; // ✅ Clear previous grid completely
+
+  const totalSquares = size * size;
+  const squareSize = 600 / size; // ✅ Adjust size so the total grid stays 
+the same width/height
+
+  for (let i = 0; i < totalSquares; i++) {
+    const cell = document.createElement("div");
+    cell.classList.add("square");
+
+    // set square size dynamically
+    cell.style.width = `${squareSize}px`;
+    cell.style.height = `${squareSize}px`;
+
+    // hover effect
+    cell.addEventListener("mouseover", () => {
+      cell.style.backgroundColor = "black";
+    });
+
+    container.appendChild(cell);
+  }
+}
+
+// ✅ Create default 16x16 grid when page loads
+document.addEventListener("DOMContentLoaded", () => {
+  createGrid(16);
+});
+
+// ✅ Reset button prompt
+document.getElementById("reset-btn").addEventListener("click", () => {
+  let newSize = parseInt(prompt("Enter new grid size (1–100):"));
+
+  if (isNaN(newSize) || newSize < 1 || newSize > 100) {
+    alert("Invalid input. Please enter a number between 1 and 100.");
     return;
   }
 
-  console.log("Creating grid:", GRID_SIZE, "x", GRID_SIZE);
-
-  // create squares
-  for (let i = 0; i < TOTAL_SQUARES; i++) {
-    const cell = document.createElement("div");
-    cell.classList.add("square");
-    cell.addEventListener('mouseover', () => {
-      cell.style.backgroundColor = 'black';
-    });
-    cell.dataset.index = i;
-    container.appendChild(cell);
-  }
-
-  console.log("Created", container.children.length, "squares.");
+  createGrid(newSize);
 });
 
