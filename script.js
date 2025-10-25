@@ -6,7 +6,6 @@ function createGrid(size) {
   container.innerHTML = ""; // ✅ Clear previous grid completely
 
   const totalSquares = size * size;
-  // ✅ Adjust size so the total grid stays the same width/height
   const squareSize = 600 / size; 
 
   for (let i = 0; i < totalSquares; i++) {
