@@ -38,7 +38,7 @@ h1 {
 /* individual square */
 .square {
   /* make exactly 16 squares per row using flex-basis */
-  flex: 0 0 calc(100% / 16);
+  flex: 1 0 calc(100% / 16);
   /* keep them squares — modern browsers support aspect-ratio */
   aspect-ratio: 1 / 1;
   border: 1px solid #f0e0d0;

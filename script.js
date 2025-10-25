@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
   for (let i = 0; i < TOTAL_SQUARES; i++) {
     const cell = document.createElement("div");
     cell.classList.add("square");
+    cell.addEventListener('mouseover', () => {
+      cell.style.backgroundColor = 'black';
+    });
     cell.dataset.index = i;
     container.appendChild(cell);
   }
