@@ -1,0 +1,59 @@
+/* ===== reset & base ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica 
+Neue", Arial;
+  background: #fffaf0;
+  color: #3e2723;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* page layout */
+main {
+  width: min(92vw, 760px);
+  text-align: center;
+}
+
+/* header */
+h1 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: #5d4037;
+}
+
+/* grid container */
+.grid-container {
+  /* flexbox layout to form rows */
+  display: flex;
+  flex-wrap: wrap;       /* allow new rows */
+  width: 100%;
+  max-width: 640px;      /* nice size for 16 squares */
+  margin: 0.5rem auto;
+  border: 2px solid #e0c9a8;
+  background: #fff;
+}
+
+/* individual square */
+.square {
+  /* make exactly 16 squares per row using flex-basis */
+  flex: 0 0 calc(100% / 16);
+  /* keep them squares — modern browsers support aspect-ratio */
+  aspect-ratio: 1 / 1;
+  border: 1px solid #f0e0d0;
+  background: #fff8e6;
+}
+
+/* optional: hover to show boundaries during dev */
+.square:hover {
+  outline: 1px solid rgba(94, 53, 35, 0.25);
+}
+
+/* small-screen fallback: scale grid container down */
+@media (max-width: 420px) {
+  .grid-container {
+    max-width: 320px;
+  }
+}
+
